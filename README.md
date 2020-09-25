@@ -21,7 +21,7 @@ services:
     MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\ArdaccessService: '@ardaccess.service'
 ```
 
-##Package instalation with composer
+## Package instalation with composer
 
 ```console
 $ composer require maillotf/ardaccess-bridge-bundle
