@@ -1,0 +1,37 @@
+services:
+    ardaccess.session:
+        class: MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\Session
+        arguments:
+            - "%ardaccess.session.root_dir%"
+            - "%ardaccess.authentication.protocol%"
+            - "%ardaccess.authentication.host%"
+            - "%ardaccess.authentication.port%"
+            - "%ardaccess.authentication.username%"
+            - "%ardaccess.authentication.password%"
+    ardaccess.access:
+        class: MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\Access
+        arguments:
+            - "@ardaccess.session"
+    ardaccess.carrier:
+        class: MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\Carrier
+        arguments:
+            - "@ardaccess.session"
+    ardaccess.cms:
+        class: MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\Cms
+        arguments:
+            - "@ardaccess.session"
+    ardaccess.creator:
+        class: MaillotF\Ardaccess\ArdaccessBridgeBundle\Creator\Creator
+    ardaccess.supervision:
+        class: MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\Supervision
+        arguments:
+            - "@ardaccess.session"
+    ardaccess.service:
+        class: MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\ArdaccessService
+        arguments:
+            - "@ardaccess.creator"
+            - "@ardaccess.carrier"
+            - "@ardaccess.access"
+            - "@ardaccess.cms"
+            - "@ardaccess.supervision"
+

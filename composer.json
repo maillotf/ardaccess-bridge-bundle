@@ -1,0 +1,26 @@
+{
+    "name": "maillotf/ardaccess-bridge-bundle",
+    "type": "symfony-bundle",
+    "description": "An ARD Access bundle for Symfony",
+    "keywords": ["ard", "access", "bridge", "symfony"],
+    "homepage": "https://github.com/maillotf/ardaccess-bridge",
+    "license": "MIT",
+    "authors": [{
+        "name": "Flavien Maillot",
+        "email": "contact@webcomputing.fr"
+    }],
+    "require": {
+        "php": "^7.0",
+        "symfony/http-kernel": "^3.2|^4.0|^4.1|^5.1",
+		"symfony/config": "^3.2|^4.0|^4.1|^5.1",
+		"symfony/dependency-injection": "^3.2|^4.0|^4.1|^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "psr-4": { 
+			"MaillotF\\Ardaccess\\ArdaccessBridgeBundle\\": "src/" 
+		}
+    }
+}
