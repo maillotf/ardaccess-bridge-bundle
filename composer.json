@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "An ARD Access bundle for Symfony",
     "keywords": ["ard", "access", "bridge", "symfony"],
-    "homepage": "https://github.com/maillotf/ardaccess-bridge",
+    "homepage": "https://github.com/maillotf/ardaccess-bridge-bundle",
     "license": "MIT",
     "authors": [{
         "name": "Flavien Maillot",

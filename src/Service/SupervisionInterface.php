@@ -2,6 +2,7 @@
 
 namespace MaillotF\Ardaccess\ArdaccessBridgeBundle\Service;
 
+use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIAttributeArray;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIList;
 
 /**
