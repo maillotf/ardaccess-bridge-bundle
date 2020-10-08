@@ -1,5 +1,9 @@
 # Ardaccess-bridge-bundle
 
+[![Software license][ico-license]](LICENSE)
+[![Latest stable][ico-version-stable]][link-packagist]
+![Packagist PHP Version Support][ico-php-version]
+
 Symfony bundle for ARD Access REST client which is base on username,password authentication
 
 ## Required configuration
@@ -81,3 +85,9 @@ class exampleController extends AbstractController
 
 }
 ```
+
+[ico-license]: https://img.shields.io/github/license/maillotf/ardaccess-bridge-bundle.svg?style=flat-square
+[ico-version-stable]: https://img.shields.io/packagist/v/maillotf/ardaccess-bridge-bundle
+[ico-php-version]: https://img.shields.io/packagist/php-v/maillotf/ardaccess-bridge-bundle
+
+[link-packagist]: https://packagist.org/packages/maillotf/ardaccess-bridge-bundle
