@@ -86,7 +86,7 @@ class exampleController extends AbstractController
 }
 ```
 
-[ico-license]: https://img.shields.io/github/license/maillotf/ardaccess-bridge-bundle.svg?style=flat-square
+[ico-license]: https://img.shields.io/github/license/maillotf/ardaccess-bridge-bundle.svg
 [ico-version-stable]: https://img.shields.io/packagist/v/maillotf/ardaccess-bridge-bundle
 [ico-php-version]: https://img.shields.io/packagist/php-v/maillotf/ardaccess-bridge-bundle
 

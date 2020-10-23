@@ -69,7 +69,7 @@ class Carrier extends AbstractWS implements CarrierInterface
 	 * @param string $sessionId The session id delivered by ArdMcm's SessionApi Login method.
 	 * @param string $action The action to do: 'c' (create), 'u' (update), 'd' (delete).
 	 * @param APIAttributeArray $attributes The item to create/update/delete attributes (for update and delete uid must be given).
-	 * @return APIAttributeArray Returns the created/updated/delete item, or SOAP Fault if error occured.
+	 * @return APIAttributeArray Returns the created/updated/delete item, or ArdAccessException if error occured.
 	 */
 	public function Carrier(?string $sessionId, string $action, array $attributes): array
 	{
@@ -81,8 +81,10 @@ class Carrier extends AbstractWS implements CarrierInterface
 			$attributes
 		));
 
-		$result = Creator::castAttributes($apiResult->item);
-
+		if (is_object($apiResult))
+			$result = Creator::castAttributes($apiResult->item);
+		else
+			throw new ArdAccessException($apiResult);
 		return ($result);
 	}
 
