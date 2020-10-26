@@ -6,6 +6,7 @@ use MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\SessionInterface;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Creator\Creator;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIAttributeArray;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIList;
+use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIPagination;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Exception\ArdAccessException;
 
 /**

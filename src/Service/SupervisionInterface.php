@@ -4,6 +4,7 @@ namespace MaillotF\Ardaccess\ArdaccessBridgeBundle\Service;
 
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIAttributeArray;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIList;
+use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIPagination;
 
 /**
  *
