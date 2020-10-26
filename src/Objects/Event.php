@@ -19,43 +19,61 @@ class Event extends AbstractArdObject
 	 *
 	 * @var string
 	 */
-	public $description;
+	private $description;
 
 	/**
 	 *
 	 * @var int
 	 */
-	public $eventtype;
+	private $eventtype;
 
 	/**
 	 *
 	 * @var int
 	 */
-	public $eventsubtype;
+	private $eventsubtype;
 
 	/**
 	 *
 	 * @var int
 	 */
-	public $deleted;
+	private $deleted;
 
 	/**
 	 *
 	 * @var int
 	 */
 	private $creationdate;
+	
+	/**
+	 *
+	 * @var \DateTime
+	 */
+	private $creationdatetime = null;
 
 	/**
 	 *
 	 * @var int
 	 */
 	private $modificationdate;
+	
+	/**
+	 *
+	 * @var \DateTime
+	 */
+	private $modificationdatetime = null;
 
 	/**
 	 *
 	 * @var int
 	 */
 	private $date;
+	
+	/**
+	 *
+	 * @var \DateTime
+	 */
+	private $datetime;
 
 	/**
 	 *
@@ -92,7 +110,35 @@ class Event extends AbstractArdObject
 	 * @var int 
 	 */
 	private $souid;
+	
+	/**
+	 *
+	 * @var DateTimeZone
+	 */
+	private $datetimezone;
+	
+	public function init()
+	{
+		parent::init();
+		$this->setDatetimezone('Europe/Paris');
+	}
+	
+	public function __construct($datetimezone = 'Europe/Paris')
+	{
+		$this->datetimezone = new \DateTimeZone($datetimezone);
+	}
 
+	public function setDatetimezone(string $datetimezone)
+	{
+		$this->datetimezone = new \DateTimeZone($datetimezone);
+		return ($this);
+	}
+	
+	public function getDatetimezone(): \DateTimeZone
+	{
+		return ($this->datetimezone);
+	}
+	
 	public function setUid(int $uid): Event
 	{
 		$this->uid = $uid;
@@ -158,6 +204,17 @@ class Event extends AbstractArdObject
 	{
 		return $this->creationdate;
 	}
+	
+	public function getCreationdatetime(): ?\DateTime
+	{
+		if ($this->creationdatetime == null)
+		{
+			$this->creationdatetime = new \DateTime();
+			$this->creationdatetime->setTimezone($this->datetimezone);
+			$this->creationdatetime->setTimestamp($this->getCreationdate());
+		}
+		return ($this->creationdatetime);
+	}
 
 	public function setModificationdate(int $modificationdate): Event
 	{
@@ -170,6 +227,17 @@ class Event extends AbstractArdObject
 		return $this->modificationdate;
 	}
 
+	public function getModificationdatetime(): ?\DateTime
+	{
+		if ($this->modificationdatetime == null)
+		{
+			$this->modificationdatetime = new \DateTime();
+			$this->modificationdatetime->setTimezone($this->datetimezone);
+			$this->modificationdatetime->setTimestamp($this->getModificationdate());
+		}
+		return ($this->modificationdatetime);
+	}
+	
 	public function setDate(int $date): Event
 	{
 		$this->date = $date;
@@ -180,47 +248,58 @@ class Event extends AbstractArdObject
 	{
 		return ($this->date);
 	}
+	
+	public function getDatetime(): ?\DateTime
+	{
+		if ($this->datetime == null)
+		{
+			$this->datetime = new \DateTime();
+			$this->datetime->setTimezone($this->datetimezone);
+			$this->datetime->setTimestamp($this->getDate());
+		}
+		return ($this->datetime);
+	}
 
-	public function setDeviceuid(int $deviceuid): Event
+	public function setDeviceuid(?int $deviceuid): Event
 	{
 		$this->deviceuid = $deviceuid;
 		return ($this);
 	}
 
-	public function getDeviceuid(): int
+	public function getDeviceuid(): ?int
 	{
 		return ($this->deviceuid);
 	}
 
-	public function setAccesspointuid(int $accesspointuid): Event
+	public function setAccesspointuid(?int $accesspointuid): Event
 	{
 		$this->accesspointuid = $accesspointuid;
 		return ($this);
 	}
 
-	public function getAccesspointuid(): int
+	public function getAccesspointuid(): ?int
 	{
 		return $this->accesspointuid;
 	}
 
-	public function setReaderuid(string $readeruid): Event
+	public function setReaderuid(?int $readeruid): Event
 	{
 		$this->readeruid = $readeruid;
 		return ($this);
 	}
 
-	public function getReaderuid(): int
+	public function getReaderuid(): ?int
 	{
 		return $this->readeruid;
 	}
 
-	public function setUseruid(int $useruid): Event
+	public function setUseruid(?int $useruid): Event
 	{
 		$this->useruid = $useruid;
 		return ($this);
 	}
 
-	public function getUseruid(): int
+	public function getUseruid(): ?int
 	{
 		return ($this->useruid);
 	}
