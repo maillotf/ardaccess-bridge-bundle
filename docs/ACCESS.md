@@ -137,7 +137,7 @@ public function GroupRight(?string $sessionId, string $action, array $attributes
 - accesspoint (integer) : The unique id of access point. If 0, then the right is on all access points. Default 0.
 - weeklyschedule (integer) : The unique id of weekly schedule. If 0, then the right is 24/24 7/7. Default 0.
 
-** Returned item properties (Array):**
+**Returned item properties (Array):**
 - uid (integer) : unique id of access right
 - group (integer) : The unique id of the group.
 - accesspoint (integer) : The unique id of access point. If 0, then the right is on all access points. Default 0.
