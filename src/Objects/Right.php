@@ -44,12 +44,41 @@ class Right extends AbstractArdObject
 	 * @var int
 	 */
 	private $creationdate;
+	
+	/**
+	 *
+	 * @var \DateTime
+	 */
+	private $creationdatetime = null;
 
 	/**
 	 *
 	 * @var int
 	 */
 	private $modificationdate;
+	
+	/**
+	 *
+	 * @var \DateTime
+	 */
+	private $modificationdatetime = null;
+	
+	/**
+	 *
+	 * @var DateTimeZone
+	 */
+	private $datetimezone;
+		
+	public function init()
+	{
+		parent::init();
+		$this->setDatetimezone('Europe/Paris');
+	}
+	
+	public function __construct($datetimezone = 'Europe/Paris')
+	{
+		$this->datetimezone = new \DateTimeZone($datetimezone);
+	}
 
 	public function setUid(int $uid): Right
 	{
@@ -116,6 +145,17 @@ class Right extends AbstractArdObject
 	{
 		return $this->creationdate;
 	}
+	
+	public function getCreationdatetime(): ?\DateTime
+	{
+		if ($this->creationdatetime == null)
+		{
+			$this->creationdatetime = new \DateTime();
+			$this->creationdatetime->setTimezone($this->datetimezone);
+			$this->creationdatetime->setTimestamp($this->getCreationdate());
+		}
+		return ($this->creationdatetime);
+	}
 
 	public function setModificationdate(int $modificationdate): Right
 	{
@@ -127,5 +167,27 @@ class Right extends AbstractArdObject
 	{
 		return $this->modificationdate;
 	}
+	
+	public function getModificationdatetime(): ?\DateTime
+	{
+		if ($this->modificationdatetime == null)
+		{
+			$this->modificationdatetime = new \DateTime();
+			$this->modificationdatetime->setTimezone($this->datetimezone);
+			$this->modificationdatetime->setTimestamp($this->getModificationdate());
+		}
+		return ($this->modificationdatetime);
+	}
 
+	public function setDatetimezone(string $datetimezone)
+	{
+		$this->datetimezone = new \DateTimeZone($datetimezone);
+		return ($this);
+	}
+	
+	public function getDatetimezone(): \DateTimeZone
+	{
+		return ($this->datetimezone);
+	}
+	
 }
