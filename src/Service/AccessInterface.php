@@ -3,6 +3,7 @@
 namespace MaillotF\Ardaccess\ArdaccessBridgeBundle\Service;
 
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIList;
+use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIPagination;
 
 /**
  *
@@ -10,7 +11,7 @@ use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIList;
  */
 interface AccessInterface
 {
-	public function ListAccessPoints(?string $sessionId = null, ?array $criteria = null, ?APIPagination $pagination = null): array;
+	public function ListAccessPoints(?string $sessionId = null, ?array $criteria = null, ?APIPagination $pagination = null): APIList;
 
 	public function WeekSchedule(?string $sessionId, string $action, array $attributes): array;
 	

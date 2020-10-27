@@ -5,6 +5,7 @@ namespace MaillotF\Ardaccess\ArdaccessBridgeBundle\Service;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\SessionInterface;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Creator\Creator;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIList;
+use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIPagination;
 
 /**
  * Description of Access
@@ -50,7 +51,7 @@ class Access extends AbstractWS implements AccessInterface
 	 * @param APIPagination $pagination The pagination list parameters.
 	 * @return APIList Returns a list of records.
 	 */
-	public function ListAccessPoints(?string $sessionId = null, ?array $criteria = null, ?APIPagination $pagination = null): array
+	public function ListAccessPoints(?string $sessionId = null, ?array $criteria = null, ?APIPagination $pagination = null): APIList
 	{
 		if ($sessionId == null)
 			$sessionId = $this->session->getSessionId();
@@ -60,7 +61,8 @@ class Access extends AbstractWS implements AccessInterface
 			$pagination
 		));
 
-		$result = Creator::castAttributes($apiResult->item);
+		$result = $this->cast($apiResult, 'APIList');
+		$result->init('AccessPoint');
 		return ($result);
 	}
 
