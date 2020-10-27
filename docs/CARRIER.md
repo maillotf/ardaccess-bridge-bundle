@@ -57,18 +57,18 @@ ArdAccessException
 
 **Example:**
 ```php
-	//Update a carrier
-	$apiAttributes = $aas->creator
-			->addAttribute('uid', 6078)
-			->addAttribute('rid', 794)
-			->addAttribute('firstname', 'Jean')
-			->addAttribute('lastname', 'Dupont')
-			->addAttribute('usergroup', '171,233')
-			->addAttribute('begindate', 946681200)
-			->addAttribute('enddate', 1627602000)
-			->addAttribute('country', 'France')
-			->getAttributes();
-	$attributes = $aas->carrier->Carrier(null, 'u', $apiAttributes);
+//Update a carrier
+$apiAttributes = $aas->creator
+		->addAttribute('uid', 6078)
+		->addAttribute('rid', 794)
+		->addAttribute('firstname', 'Jean')
+		->addAttribute('lastname', 'Dupont')
+		->addAttribute('usergroup', '171,233')
+		->addAttribute('begindate', 946681200)
+		->addAttribute('enddate', 1627602000)
+		->addAttribute('country', 'France')
+		->getAttributes();
+$attributes = $aas->carrier->Carrier(null, 'u', $apiAttributes);
 ```
 
 ## <a name="rcarriers"></a>Lists available carriers based on search criteria
@@ -113,8 +113,8 @@ public function ListCarriers(?string $sessionId = null, ?array $criteria = null,
 
 **Example:**
 ```php
-	//List of the carriers
-	$carriersList = $aas->carrier->ListCarriers();
+//List of the carriers
+$carriersList = $aas->carrier->ListCarriers();
 ```
 
 ## <a name="cudcarriergroup"></a>Create, update or delete carrier group

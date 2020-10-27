@@ -6,6 +6,9 @@
 
 Symfony bundle for ARD Access REST client which is base on username,password authentication
 
+## Documentation
+- [Table of contents](https://github.com/maillotf/ardaccess-bridge-bundle/blob/master/docs/README.md)
+
 ## Required configuration
 
 ### Modify framework.yaml

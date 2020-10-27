@@ -29,14 +29,14 @@ Search criteria
 
 **Example:**
 ```php
-	//Find carrier
-	$criterions = $aas->creator
-			->newCriterion('firstname', '=', $firsname)
-			->addCriterion()
-			->newCriterion('lastname', '=', $lastname)
-			->addCriterion()
-			->getCriterionsArray();
-	$carriers = $aas->carrier->ListCarriers(null, $criterions);
+//Find carrier
+$criterions = $aas->creator
+		->newCriterion('firstname', '=', $firsname)
+		->addCriterion()
+		->newCriterion('lastname', '=', $lastname)
+		->addCriterion()
+		->getCriterionsArray();
+$carriers = $aas->carrier->ListCarriers(null, $criterions);
 ```
 
 ```php
