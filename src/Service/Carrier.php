@@ -5,6 +5,7 @@ namespace MaillotF\Ardaccess\ArdaccessBridgeBundle\Service;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Service\SessionInterface;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Creator\Creator;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIList;
+use MaillotF\Ardaccess\ArdaccessBridgeBundle\Objects\APIPagination;
 use MaillotF\Ardaccess\ArdaccessBridgeBundle\Exception\ArdAccessException;
 
 /**
@@ -89,7 +90,7 @@ class Carrier extends AbstractWS implements CarrierInterface
 	}
 
 	/**
-	 * Lists available carriers based on search criteriae.
+	 * Lists available carriers based on search criteria.
 	 * 
 	 * Available criteria :
 	 * - uid (integer) : The carrier unique identifier.
