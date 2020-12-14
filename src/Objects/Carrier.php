@@ -48,9 +48,20 @@ class Carrier extends AbstractArdObject
 
 	/**
 	 *
+	 * @var \DateTime|null
+	 */
+	private $begindatedatetime = null;
+
+	/**
+	 *
 	 * @var int
 	 */
 	private $enddate;
+
+	/**
+	 * @var \DateTime|null
+	 */
+	private $enddatedatetime = null;
 
 	/**
 	 *
@@ -66,6 +77,10 @@ class Carrier extends AbstractArdObject
 	private $country;
 	private $comments;
 	private $dateofbirth;
+	/**
+	 * @var \DateTime|null
+	 */
+	private $dateofbirthdatetime;
 	private $userfield0;
 	private $userfield1;
 	private $userfield2;
@@ -76,6 +91,11 @@ class Carrier extends AbstractArdObject
 	private $userfield7;
 	private $userfield8;
 	private $userfield9;
+	/**
+	 *
+	 * @var DateTimeZone
+	 */
+	private $datetimezone;
 
 	public function init()
 	{
@@ -91,7 +111,24 @@ class Carrier extends AbstractArdObject
 				if (method_exists($this, $method))
 					$this->$method($value->value);
 			}
+			$this->setDatetimezone('Europe/Paris');
 		}
+	}
+
+	public function __construct($datetimezone = 'Europe/Paris')
+	{
+		$this->datetimezone = new \DateTimeZone($datetimezone);
+	}
+
+	public function setDatetimezone(string $datetimezone)
+	{
+		$this->datetimezone = new \DateTimeZone($datetimezone);
+		return ($this);
+	}
+
+	public function getDatetimezone(): \DateTimeZone
+	{
+		return ($this->datetimezone);
 	}
 
 	public function setUid(int $uid): Carrier
@@ -113,8 +150,6 @@ class Carrier extends AbstractArdObject
 
 	public function getRid(): ?int
 	{
-		if ($this->rid == null)
-			dump($this);
 		return ($this->rid);
 	}
 
@@ -162,6 +197,19 @@ class Carrier extends AbstractArdObject
 		return ($this->begindate);
 	}
 
+	public function getBegindateDatetime(): ?\DateTime
+	{
+		if ($this->begindatedatetime == null)
+		{
+			if ($this->begindate == 0)
+				return (null);
+			$this->begindatedatetime = new \DateTime();
+			$this->begindatedatetime->setTimezone($this->datetimezone);
+			$this->begindatedatetime->setTimestamp($this->getBegindate());
+		}
+		return ($this->begindatedatetime);
+	}
+
 	public function setenddate(int $enddate): Carrier
 	{
 		$this->enddate = $enddate;
@@ -171,6 +219,19 @@ class Carrier extends AbstractArdObject
 	public function getEnddate(): int
 	{
 		return ($this->enddate);
+	}
+
+	public function getEnddateDatetime(): ?\DateTime
+	{
+		if ($this->enddatedatetime == null)
+		{
+			if ($this->enddate == 0)
+				return (null);
+			$this->enddatedatetime = new \DateTime();
+			$this->enddatedatetime->setTimezone($this->datetimezone);
+			$this->enddatedatetime->setTimestamp($this->getEnddate());
+		}
+		return ($this->enddatedatetime);
 	}
 
 	public function setDisabled(bool $disabled): Carrier
@@ -286,6 +347,19 @@ class Carrier extends AbstractArdObject
 	public function getDateofbirth()
 	{
 		return $this->dateofbirth;
+	}
+
+	public function getDateofbirthdatetime(): ?\DateTime
+	{
+		if ($this->dateofbirthdatetime == null)
+		{
+			if ($this->dateofbirth == 0)
+				return (null);
+			$this->dateofbirthdatetime = new \DateTime();
+			$this->dateofbirthdatetime->setTimezone($this->datetimezone);
+			$this->dateofbirthdatetime->setTimestamp($this->getBegindate());
+		}
+		return ($this->dateofbirthdatetime);
 	}
 
 	public function setUserfield0($userfield): Carrier
